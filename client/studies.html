@@ -1,0 +1,61 @@
+<head>
+  <title>studies</title>
+</head>
+
+<body>
+</body>
+
+<template name="layout">
+  {{> navbar}}
+  <div class="container-fluid">
+  {{> yield}}
+  </div>
+</template>
+
+<template name="home">
+  <h2>Available Studies:</h2>
+  <ul>
+  {{#each studies}}
+    <li><a href="{{pathFor 'study' _id=this._id}}">{{title}}</a></li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="dashboard">
+  <h2>My Studies:</h2>
+  <ul>
+  {{#each .}}
+    <li><a href="{{pathFor 'study' _id=this._id}}">{{title}}</a></li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="study">
+  <h2>{{title}}</h2>
+</template>
+
+<template name="navbar">
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Studies</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        {{> accountButtons}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+</template>
+
+<template name="notFound">4&oslash;4</template>
